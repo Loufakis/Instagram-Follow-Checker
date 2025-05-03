@@ -1,0 +1,16 @@
+# Ignore Python cache
+__pycache__/
+*.py[cod]
+
+# Ignore virtual environments
+.venv/
+env/
+venv/
+
+# Ignore environment files with secrets
+.env
+env/
+venv/
+
+# Instagrapi session
+session.json
