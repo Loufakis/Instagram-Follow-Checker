@@ -55,7 +55,7 @@ def login_with_env(session_file: str = "session.json") -> Client:
     username = get_env_variable("IG_USERNAME")
     password = get_env_variable("IG_PASSWORD")
 
-    # Try to reuse a previously saved session
+    # Attempt to reuse an existing session to avoid logging in again
     if os.path.exists(session_file):
         try:
             cl.load_settings(session_file)        # Load saved session settings
@@ -65,14 +65,14 @@ def login_with_env(session_file: str = "session.json") -> Client:
             return cl
         except Exception as e:
             print("⚠️ Failed to reuse session:", e)
-            os.remove(session_file)               # Remove corrupted session file
+            os.remove(session_file)               # Delete invalid session and fallback to fresh login
 
-    # If no valid session, do a fresh login
+    # Fallback to fresh login
     try:
         cl.login(username, password)
         print("✅ Logged in fresh and session saved")
     except TwoFactorRequired:
-        # Prompt user for 2FA code if required
+        # If 2FA is enabled, prompt user for the code
         verification_code = input("🔐 Enter the 2FA code sent to your device: ").strip()
         cl.login(username, password, verification_code=verification_code)
         print("✅ Logged in with 2FA successfully")
@@ -80,54 +80,6 @@ def login_with_env(session_file: str = "session.json") -> Client:
     # Save the session for future runs
     cl.dump_settings(session_file)
     return cl
-
-
-def fetch_user_details(cl: Client, usernames: list[str]) -> list[dict]:
-    """
-    Fetch full profile info for a list of Instagram usernames.
-    If a profile can't be fetched, the username is still included with NaN fields.
-
-    Args:
-        cl (Client): Authenticated instagrapi client.
-        usernames (list[str]): Usernames to look up.
-
-    Returns:
-        list[dict]: List of user metadata dictionaries.
-    """
-    user_data = []
-    failed_users = []
-
-    for username in usernames:
-        try:
-            user = cl.user_info_by_username(username)
-            user_data.append({
-                "username": user.username,
-                "full_name": user.full_name,
-                "is_private": user.is_private,
-                "account_type": user.account_type,
-                "is_verified": user.is_verified
-            })
-        except Exception as e:
-            # Add user with None values for missing fields
-            user_data.append({
-                "username": username,
-                "full_name": None,
-                "is_private": None,
-                "account_type": None,
-                "is_verified": None
-            })
-            failed_users.append((username, str(e)))
-        time.sleep(1.5)  # Slow down to avoid being flagged
-
-    # Save failed lookups for review
-    if failed_users:
-        os.makedirs("outputs", exist_ok=True)
-        with open("outputs/skipped_users.txt", "w") as f:
-            for username, error in failed_users:
-                f.write(f"{username}: {error}\n")
-        print(f"⚠️ Skipped {len(failed_users)} users. See outputs/skipped_users.txt")
-
-    return user_data
 
 
 def compare_followers_and_following(cl: Client, username: str) -> None:
@@ -138,25 +90,31 @@ def compare_followers_and_following(cl: Client, username: str) -> None:
         cl (Client): Authenticated instagrapi client.
         username (str): Your Instagram username.
     """
+    # Get the internal Instagram user ID
     user_id = cl.user_id_from_username(username)
 
     print("📥 Fetching followers...")
     followers = cl.user_followers(user_id)
-    time.sleep(3)
+    time.sleep(3)  # Pause to mimic human behavior
 
     print("📤 Fetching following...")
     following = cl.user_following(user_id)
-    time.sleep(3)
+    time.sleep(3)  # Pause to mimic human behavior
 
+    # Extract just the usernames from user objects
     followers_usernames = sorted({user.username for user in followers.values()})
     following_usernames = sorted({user.username for user in following.values()})
 
+    # Determine who you follow that doesn’t follow you back
     not_following_back = sorted(set(following_usernames) - set(followers_usernames))
+
+    # Determine who follows you but you don’t follow back
     not_followed_back = sorted(set(followers_usernames) - set(following_usernames))
 
+    # Make sure the output folder exists
     os.makedirs("outputs", exist_ok=True)
 
-    # Save to .txt files
+    # Save the results as .txt files
     with open("outputs/not_following_back.txt", "w") as f:
         f.writelines(f"{username}\n" for username in not_following_back)
 
@@ -168,6 +126,7 @@ def compare_followers_and_following(cl: Client, username: str) -> None:
     print(f"   • {len(not_followed_back)} you’re not following back → outputs/fans.txt")
 
 
+# Entry point of the script
 if __name__ == "__main__":
     load_dotenv()  # Load credentials from .env file
     client = login_with_env()

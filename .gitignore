@@ -14,3 +14,6 @@ venv/
 
 # Instagrapi session
 session.json
+
+# Ignore all .txt result files in the outputs folder
+outputs/*.txt

@@ -1,7 +1,7 @@
 220fiu
 _astronio_
 adrianautardtenor
-adxcofficial
+aelanvaast
 afina_fe
 ahmad_workout
 ajp_austria
@@ -15,6 +15,7 @@ ajp_turkey
 ajpeurope
 ajpserbia
 ajptour
+alesbaastos
 alexis_markazos
 amhband
 ancientmemes
@@ -35,6 +36,7 @@ chinamanyip
 chriswillx
 cirquedusoleil
 classic.divinity
+cmv.valentina18
 coldplay
 connorprice
 craigjonesbjj
@@ -53,6 +55,7 @@ erinimusic
 euta.gr
 eygreece
 f808z
+fanis_labropoulos
 ffiffipengtinginlondon
 fit_aitana
 fitnesslifestyleclub
@@ -77,12 +80,10 @@ iliasfood
 imaginedragons
 influencersinthewild
 itsjustphysics.gr
-jakegyllenhaal
 jazlopez.mt
 jdiego_florez
 jeannegoursaud
 jennifer__chong
-jess.rubino
 jessideoliveira
 jimcarrey__
 jiujitsu.fanastics
@@ -99,7 +100,6 @@ jonbatiste
 jordan.b.peterson
 joya.theant
 judo.fanatics
-jujimufu
 julia_karv
 junnyy_13
 justinshape
@@ -188,10 +188,8 @@ megarothessalonikis
 melitinass
 mesquita_mma
 mestrepapaleguascapoeira
-metopera
 mia_montesinos_bjj
 micagalvaojj
-michaelulmer
 micosenzala
 mikaela.ptr
 mike_hatzis_
@@ -234,6 +232,7 @@ no_mercy_project
 noemi_photogallery
 notsarasaffari
 octagon_academy
+officer_grimy
 officialodddanny
 okeda___
 ondinha__
@@ -270,7 +269,6 @@ robertoalagna.tenor
 rogergracie
 rogergraciedubai
 roll_jiujitsu_brand
-rosa_progressive
 rotten_tatt
 roylergracie
 rozademan._
@@ -279,6 +277,7 @@ ruanalvarengabjj
 ruotolobrothersjiujitsu
 sakisrouvas
 sanjuansymphony
+sarahndorough
 sarasaffari__
 sarovozi
 seanmichael_travels
@@ -292,7 +291,6 @@ slimane
 soffia.berou
 sofi_sidera
 sofia.venetikidou
-sondre_berg
 souledouttheband
 spikelmyers
 spiliosfl
@@ -311,7 +309,6 @@ stevecole__
 tabatha.ricci
 tainandalpra
 tatawribeiro
-team1llusion
 tech_wizzdom
 techsalonikigr
 tenoreguzman
@@ -354,4 +351,5 @@ xorislogia
 xristoforidis00
 xristos_raftas
 yannisassael
+yoga.with.tamara
 zissis_roumbos
