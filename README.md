@@ -20,6 +20,20 @@ The results are saved as plain `.txt` files for simple review.
     - `outputs/not_following_back.txt`
   
 
+## 📂 Project Structure  
+
+```  
+📁 outputs/                     # Contains output TXT reports
+├── fans.txt
+├── not_following_back.txt  
+📄 .env                         # Your credentials (excluded from Git)
+📄 .env.example                 # Template for environment variables
+📄 .gitignore                   # Hides sensitive/session files
+📄 requirements.txt             # Python package dependencies
+📄 session.json                 # Cached session file to avoid repeated logins (excluded from Git)  
+📄 instagram_follow_checker.py  # Main script
+📄 README.md
+```  
 
 
 ## 📦 Requirements
@@ -75,20 +89,7 @@ Each file contains one username per line.
 
 
 
-## 📂 Project Structure  
 
-```  
-📁 outputs/                     # Contains output TXT reports
-├── fans.txt
-├── not_following_back.txt  
-📄 .env                         # Your credentials (excluded from Git)
-📄 .env.example                 # Template for environment variables
-📄 .gitignore                   # Hides sensitive/session files
-📄 requirements.txt             # Python package dependencies
-📄 session.json                 # Cached session file to avoid repeated logins (excluded from Git)  
-📄 instagram_follow_checker.py  # Main script
-📄 README.md
-```  
 
 
 ## ⚠️ Disclaimer
